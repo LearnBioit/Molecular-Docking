@@ -1,0 +1,122 @@
+                                                    ********MOLECULAR DOCKING**********
+
+""" THEORY """
+What?: The interaction between the target and ligand (e.g. Key-keyHole/Hand-Glove)
+Why?: To perform in silico studies for interaction
+How?: Using various tools
+
+Docking is the concept where tools are decided on the basis of input that you are working with: 
+There are n numbers tools available for e.g.
+
+Protein Small molecules:  Autodock tools, SCRO, DS,..
+Protein-Protein: PATCHDOCK, ZDOCK, HADDOCK, HEX, ClusPro
+Protein-Small Molecules (Ligands): Autodock (1 protein and 1 ligand), Vina (1 protein and multiple ligands)
+Protein Molecules + Cofactors: SCRO (GLIDE)
+Protein-Peptide: PATCHDOCK
+Antigen-Antibody: PATCHDOCK
+Protein-Peptide (very small molecules): Autodock tools, Vina, PATCHDOCK
+Protein small molecules (PT/CD): Autodock tools
+Peptide Peptide: CRANKPEP
+Covalent Docking: ADFG
+HRDRATE DOCKING: SUIT OF ADFR
+
+---------------------------------------------------------
+************AUTODOCK TOOLS***********
+----------------------------------------------------------
+
+*********AUTODOCK TOOLS***********
+TO PEROFRM AUTODOCK TOOLS WE NEED:
+1. Target- PROTEIN/LOCK/HOST
+----Identification-Literature
+---Prediction---??
+this is the conditon in which you hava a moleucle with you, this can also be done with literature or if not then:
+----server--Swisstarget etc,
+
+2. Ligand: Guest/small molecules/ HITS/POT/NOVEL/
+-------PHARMACOPHORE BASED HITS
+-------STRUCTURAL SIMILARITY BASED HITS
+-------NOVEL MOLEULE
+-------PREDICTION/HYPOTHESIS
+3. Active site(KEYHOLE): Binding site and catalytic site:
+ -------------lITERATURE, PREDICTION, SEQ ALIGNMENT.......
+
+
+#NOTE: (BEFORE YOU WERE PERFORMING THE DOCKING, YOU MUST MEET THE CRITERIA, LIKE: PROTEIN, LIGAND AND ACTIVE SITE OF THE PROTEIN)
+a. Protein ------ Protein.pdb
+b. ligand ------- ligand.sdf
+c. Active site: lit, ligplot (x, y, and z co-ordinates)
+
+#The Procedure of the Docking:
+
+*********************Pre Autodock tools steps*************************
+A. Target Preparation- protein.pdb---clean the files, removal of heteroatoms, unwanted chains by using Discovery studio, grep, text editors etc.
+
+ This can be done by the following general procedure:
+'''Discovery Studio Visualizer'''
+      Open the PDB or protein file in Discovery Studio Visualizer by selecting Open then File.
+      Remove heteroatoms such as water molecules, sulphate, phosphate, solvents, ions, salts 
+      like Ca, Mg, etc.
+      If the protein has two or more identical chains, keep only one chain.
+      Go to Scripts → Ligand Interactions → Show Ligand Binding Site Atoms.
+      Right-click → Label → Residue.
+      Find the bonds attached to the native ligand and amino acids.
+      Make a note of these interactions.
+      Delete the ligand and save the file in the protein.pdb format.
+
+
+
+
+B. ligand Preparation- ligand.sdf --- Energy Minimization by using of Marvin tools
+ the ligand of 2D sdf file can be changed  into 3D sdf file as follows;
+        Go to Edit- open sdf file.
+        Again go to Edit - clean- 2D
+        Edit - clean - 3D
+        Save as sybl mol2 format.
+------------------------------------------------------------------------------------------
+
+***************In Autodock tools steps*****************
+1. Target/Protein
+       Go to File --- Read Molecule - open protein.pdb
+       Go to Edit --- Hydrogens - Add- Polar only.
+       Go to file --- Save - Write PDB - OK
+       Delete moleule
+
+2. ligand Preparation
+        Go to ligand - Input - Open (lidand.mol2)
+        Go to ligand - Torsion Tree - Direct Root
+        Go to ligand - Torsion Tree - Show Root Expansion
+        Go to ligand - Torsion Tree - Choose torsions
+        Go to ligand - Torsion Tree- Set number of torsions
+        Go to ligand - Output - save as pdbqt (ligand.pdbqt)
+   Delete molecule.
+
+3.Grid Preparation
+        Go to Grid - Macromolecule - Open
+        In here, the macromolecule (i.e pdb file will be converted into the pdbqt file 
+        inside the same path of the pdb file.
+        Add atoms types as, 
+        Select Gird - Set Map types - Directly - A C H Cl Br I F S P HD N NA OA SA 
+        (Altogether 14 map types)
+        Grid - Grid Box: Enter your Center Grid Box Below: ( An active Site data), and Upper 
+        Number of points in x, y and z to reach to 60 60 60 respectively.
+        Go to file- Close saving current
+        Go to Grid - Output - Save GPF proteinname.gpf
+
+In this way the GPF file is created for the particular protein.
+
+4. Docking file Preparation
+   Go to Docking - Macromolecule - set rigid filename (open protein.pdbqt)
+   Go to Docking - Ligand - Open ( Open ligand.pdbqt)
+   Go to Docking -Search parameters - Genetic algorithms - Accept
+   Go to Docking - Docking - Lamarckcian GA - save dpf (lignand.dpf)
+
+  *********************Performing Docking*************************
+  * Running the grid: Autogrid -p protein.gpf -l protein.glg     *
+  * Running the Docking: Autodock4 -p ligand.dpf -l ligand.dlg   *  
+  ****************************************************************
+
+------------------
+|Docking Analysis|
+-------------------
+
+
