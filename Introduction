@@ -18,27 +18,31 @@ Protein-Peptide (very small molecules): Autodock tools, Vina, PATCHDOCK
 Protein small molecules (PT/CD): Autodock tools
 Peptide Peptide: CRANKPEP
 Covalent Docking: ADFG
-HRDRATE DOCKING: SUIT OF ADFR
+Hydrate Docking: SUIT OR ADFR
 
 ---------------------------------------------------------
-************AUTODOCK TOOLS***********
+##########################AUTODOCK TOOLS#################
 ----------------------------------------------------------
 
 *********AUTODOCK TOOLS***********
-TO PEROFRM AUTODOCK TOOLS WE NEED:
+#TO PEROFRM AUTODOCK TOOLS WE NEED:
 1. Target- PROTEIN/LOCK/HOST
 ----Identification-Literature
----Prediction---??
-this is the conditon in which you hava a moleucle with you, this can also be done with literature or if not then:
-----server--Swisstarget etc,
+---Prediction-
+     - Swisstarget
+     - CASTP
+     -COACH
+     - SCFBIO 
+#This is the conditon in which you hava a moleucle with you, this can also be done with literature or if not then:
+#----server--Swisstarget etc,
 
 2. Ligand: Guest/small molecules/ HITS/POT/NOVEL/
 -------PHARMACOPHORE BASED HITS
 -------STRUCTURAL SIMILARITY BASED HITS
 -------NOVEL MOLEULE
 -------PREDICTION/HYPOTHESIS
-3. Active site(KEYHOLE): Binding site and catalytic site:
- -------------lITERATURE, PREDICTION, SEQ ALIGNMENT.......
+3. Active site(KEYHOLE):
+ lITERATURE, PREDICTION, SEQ ALIGNMENT
 
 
 #NOTE: (BEFORE YOU WERE PERFORMING THE DOCKING, YOU MUST MEET THE CRITERIA, LIKE: PROTEIN, LIGAND AND ACTIVE SITE OF THE PROTEIN)
@@ -73,8 +77,7 @@ B. ligand Preparation- ligand.sdf --- Energy Minimization by using of Marvin too
         Edit - clean - 3D
         Save as sybl mol2 format.
 ------------------------------------------------------------------------------------------
-
-***************In Autodock tools steps*****************
+##############In Autodock tools steps##########################
 1. Target/Protein
        Go to File --- Read Molecule - open protein.pdb
        Go to Edit --- Hydrogens - Add- Polar only.
@@ -110,10 +113,10 @@ In this way the GPF file is created for the particular protein.
    Go to Docking -Search parameters - Genetic algorithms - Accept
    Go to Docking - Docking - Lamarckcian GA - save dpf (lignand.dpf)
 
-  *********************Performing Docking*************************
+  ####################Performing Docking##########################
   * Running the grid: Autogrid -p protein.gpf -l protein.glg     *
   * Running the Docking: Autodock4 -p ligand.dpf -l ligand.dlg   *  
-  ****************************************************************
+  ################################################################
 
 ------------------
 |Docking Analysis|
