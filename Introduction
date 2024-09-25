@@ -121,5 +121,13 @@ In this way the GPF file is created for the particular protein.
 ------------------
 |Docking Analysis|
 -------------------
+The docking analysis can be conducted based on the following factors:
+A lower binding energy is preferred.
+An imaximum number of hydrogen bonds is desirable.
+The specific pose number should be considered.
+It is important to determine whether the docking occurs within the binding pocket.
+--------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
 
 
